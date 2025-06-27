@@ -1,7 +1,8 @@
 # Aris: A Lightweight Bio-Inspired AGI Prototype (Aristotle)
 
 ![Aris GUI Screenshot - Placeholder](Figure1.png)
-*^ Placeholder image. Replace with a real screenshot of Aris running. ^*
+![Aris GUI Screenshot - Placeholder](Figure2.png)
+
 
 ##  Project Overview
 
