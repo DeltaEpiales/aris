@@ -135,22 +135,22 @@ To start the Aris prototype and view its real-time visualization:
 
 ## 📁 Project Structure
 
-agi_prototype/
-├── main.py                # Main simulation loop, orchestration, developmental phase
-├── config.py              # Centralized configuration parameters
-├── src/
-│   ├── neurons.py         # LIF neuron model, intrinsic plasticity
-│   ├── synapses.py        # Synaptic connections, STDP, synaptic decay/pruning, developmental bias
-│   ├── network.py         # Overall network architecture (layers, connectivity, neuromodulation, memory calls)
-│   ├── hdc.py             # Hyperdimensional Computing core operations
-│   ├── neuromodulation.py # Neuromodulator dynamics (Dopamine, Acetylcholine, Serotonin)
-│   ├── memory.py          # Hippocampal and Neocortical modules, replay, consolidation
-│   └── data_encoders.py   # Encoding raw data to spikes/hypervectors, decoding
-├── utils/
-│   ├── visualization.py   # Matplotlib plotting for real-time monitoring
-│   └── metrics.py         # Performance evaluation functions
-└── ui/
-└── gui.py             # PyQt5 Graphical User Interface
+* `agi_prototype/`
+    * `main.py`
+    * `config.py`
+    * `src/`
+        * `neurons.py`
+        * `synapses.py`
+        * `network.py`
+        * `hdc.py`
+        * `neuromodulation.py`
+        * `memory.py`
+        * `data_encoders.py`
+    * `utils/`
+        * `visualization.py`
+        * `metrics.py`
+    * `ui/`
+        * `gui.py`
 
 
 ## ⚠️ Current Status & Limitations
