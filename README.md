@@ -1,6 +1,6 @@
 # Aris: A Lightweight Bio-Inspired AGI Prototype (Aristotle)
 
-![Aris GUI Screenshot - Placeholder](image_a3ce1b.png)
+![Aris GUI Screenshot - Placeholder](Figure1.png)
 *^ Placeholder image. Replace with a real screenshot of Aris running. ^*
 
 ##  Project Overview
@@ -48,7 +48,7 @@ Aris is built around a **Bio-Hyper-SNN** architecture, a novel integration of Sp
     * **Serotonin:** Associated with cost, exploration, and redundancy.
 * These levels dynamically decay and are influenced by internal network states and conceptual "information signals."
 
-## 🚀 Novel Algorithms & Innovations (Beyond the Standard)
+##  Novel Algorithms & Innovations (Beyond the Standard)
 
 Aris is not just a simulation; it's a testbed for novel, speculative algorithms pushing the boundaries of bio-inspired AI:
 
@@ -134,3 +134,61 @@ To start the Aris prototype and view its real-time visualization:
     * **"Dopamine Pulse" Slider:** Conceptually injects a dopamine pulse, demonstrating real-time neuromodulatory control (will affect learning rates in the network).
 
 ## 📁 Project Structure
+
+agi_prototype/
+├── main.py                # Main simulation loop, orchestration, developmental phase
+├── config.py              # Centralized configuration parameters
+├── src/
+│   ├── neurons.py         # LIF neuron model, intrinsic plasticity
+│   ├── synapses.py        # Synaptic connections, STDP, synaptic decay/pruning, developmental bias
+│   ├── network.py         # Overall network architecture (layers, connectivity, neuromodulation, memory calls)
+│   ├── hdc.py             # Hyperdimensional Computing core operations
+│   ├── neuromodulation.py # Neuromodulator dynamics (Dopamine, Acetylcholine, Serotonin)
+│   ├── memory.py          # Hippocampal and Neocortical modules, replay, consolidation
+│   └── data_encoders.py   # Encoding raw data to spikes/hypervectors, decoding
+├── utils/
+│   ├── visualization.py   # Matplotlib plotting for real-time monitoring
+│   └── metrics.py         # Performance evaluation functions
+└── ui/
+└── gui.py             # PyQt5 Graphical User Interface
+
+
+## ⚠️ Current Status & Limitations
+
+Aris is a **research prototype**. While it incorporates advanced conceptual algorithms and aims for efficiency, it is **not yet a true AGI**. Key limitations include:
+
+* **Conceptual Algorithms:** Many "novel" algorithms (e.g., Information-Theoretic Neuromodulation, Quantum-Inspired Binding) are implemented conceptually, representing the *principle* rather than a fully solved, mathematically rigorous, or biologically exhaustive mechanism. They serve as a foundation for further research.
+* **Scalability:** While designed for efficiency, simulating brain-scale networks (billions of neurons, trillions of synapses) is currently beyond consumer hardware. This prototype operates at a much smaller scale.
+* **Learning Task Complexity:** The current input `_generate_example_input` is simplistic. Real AGI requires complex, multi-modal, open-ended learning environments.
+* **Parameter Tuning:** The parameters in `config.py` are initial values and will require extensive tuning and experimentation to observe optimal or desired emergent behaviors.
+* **Debugging:** Complex, dynamic SNNs are inherently challenging to debug.
+
+## 📈 Future Work & How to Contribute
+
+This project is a starting point for an exciting journey. We welcome contributions from researchers, developers, and enthusiasts!
+
+Possible areas for future development:
+
+* **Refine Core Algorithms:**
+    * Develop more sophisticated `Prediction_surprise`, `Epistemic_uncertainty`, and `Info_redundancy` calculation methods based on network state and environmental feedback.
+    * Implement more advanced forms of contextual binding in HDC.
+    * Explore reinforcement learning loops for goal-directed behavior, driven by neuromodulators.
+* **Memory System Enhancement:**
+    * Integrate a truly trainable SNN within the Neocortical Module that learns from replayed HDVs.
+    * Develop mechanisms for hierarchical memory organization and retrieval.
+* **Sensory & Motor Integration:**
+    * Connect to real-world sensory inputs (e.g., event-based cameras, microphones).
+    * Develop motor control modules to enable embodied interaction.
+* **Advanced Learning Tasks:** Implement complex, open-ended learning environments (e.g., mini-games, simulated robots) to test emergent AGI capabilities.
+* **Performance Optimization:** Explore PyTorch's advanced features for sparse tensor operations, JIT compilation, and potentially porting critical sections to custom CUDA kernels for extreme efficiency.
+* **Theoretical Development:** Further formalize the mathematical underpinnings of the conceptual algorithms.
+
+If you're interested in contributing, please feel free to fork the repository, open issues, and submit pull requests.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgements
+
+Inspired by the intricate complexity and astounding efficiency of the biological brain, and guided by the principles of Spiking Neural Networks and Hyperdimensional Computing. Special thanks to the open-source community for foundational libraries like PyTorch, NumPy, Matplotlib, and PyQt5.
