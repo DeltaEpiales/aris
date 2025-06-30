@@ -6,7 +6,7 @@
 
 ##  Project Overview
 
-**Aris** (short for **Aristotle**) is an ambitious open-source project aimed at exploring the foundational principles for building a **lightweight Artificial General Intelligence (AGI)** capable of running on conventional home computing hardware, specifically leveraging modern GPUs like the NVIDIA RTX 4070 Studio.
+**Aris** (short for **Aristotle**) is an ambitious open-source project aimed at exploring the foundational principles for building a **lightweight Artificial General Intelligence (AGI)** capable of running on conventional home computing hardware, specifically leveraging modern GPUs like the NVIDIA RTX 4070 Studio and other RTX cards. <I just so happen to have a 4070>
 
 Unlike traditional large-scale deep learning models that rely on immense computational power and data, Aris draws inspiration directly from the incredible efficiency of biological brains. Our core philosophy is that by carefully designing the AI's architecture and learning mechanisms to mimic the brain's resourcefulness, we can create a system that inherently "figures out how to store information in a set amount of space" and operates with remarkable efficiency.
 
@@ -92,7 +92,7 @@ To set up and run Aris on your local machine:
     ```
 
 3.  **Install dependencies:**
-    * **PyTorch with CUDA:** This is crucial for leveraging your RTX 4070. Visit the official PyTorch installation page ([https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)), select your OS, `Pip`, and **your specific CUDA version (e.g., CUDA 12.1 for `cu121`)**. The command will look similar to this:
+    * **PyTorch with CUDA:** This is crucial for leveraging your RTX gpu. Visit the official PyTorch installation page ([https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)), select your OS, `Pip`, and **your specific CUDA version (e.g., CUDA 12.1 for `cu121`)**. The command will look similar to this:
         ```bash
         pip install torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cu121](https://download.pytorch.org/whl/cu121)
         ```
@@ -111,7 +111,7 @@ To set up and run Aris on your local machine:
         print(f"CUDA version: {torch.version.cuda}")
         print(f"GPU name: {torch.cuda.get_device_name(0)}")
     ```
-    You should see `CUDA available: True` and your RTX 4070 listed. If not, revisit PyTorch installation and ensure your NVIDIA GPU drivers are up to date.
+    You should see `CUDA available: True` and your RTX gpu listed. If not, revisit PyTorch installation and ensure your NVIDIA GPU drivers are up to date.
 
 ##  Usage
 
