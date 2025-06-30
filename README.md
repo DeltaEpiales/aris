@@ -78,7 +78,7 @@ To set up and run Aris on your local machine:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/DeltaEpiales/aris.git](https://github.com/your-username/Aris.git(https://github.com/DeltaEpiales/aris.git))  # Replace with your actual repo URL
+    git clone [https://github.com/DeltaEpiales/aris.git](https://github.com/DeltaEpiales/aris.git) 
     cd Aris
     ```
 
