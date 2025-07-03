@@ -71,46 +71,6 @@ Aris is not just a simulation; it's a testbed for novel, speculative algorithms 
     * **Concept:** The `NeocorticalModule` distills episodic memories into generalized, space-efficient semantic knowledge.
     * **Implementation:** When a replayed episodic hypervector is received, the `NeocorticalModule.consolidate_pattern` attempts to `hdc.bundle()` it with an existing similar semantic concept in its `semantic_memory_bank`. This combines multiple experiences into a single, more generalized HDC representation, effectively compressing information and demonstrating the brain's efficient knowledge organization.
 
-## 🛠️ Installation
-
-To set up and run Aris on your local machine:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/your-username/Aris.git](https://github.com/your-username/Aris.git)  # Replace with your actual repo URL
-    cd Aris
-    ```
-
-2.  **Create a virtual environment (recommended):**
-    ```bash
-    python -m venv venv
-    # On Windows:
-    .\venv\Scripts\activate
-    # On macOS/Linux:
-    source venv/bin/activate
-    ```
-
-3.  **Install dependencies:**
-    * **PyTorch with CUDA:** This is crucial for leveraging your RTX 4070. Visit the official PyTorch installation page ([https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)), select your OS, `Pip`, and **your specific CUDA version (e.g., CUDA 12.1 for `cu121`)**. The command will look similar to this:
-        ```bash
-        pip install torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cu121](https://download.pytorch.org/whl/cu121)
-        ```
-        (Replace `cu121` with your chosen CUDA version).
-    * **Other libraries:**
-        ```bash
-        pip install numpy matplotlib PyQt5
-        ```
-
-4.  **Verify CUDA Installation:**
-    Run these Python commands in your activated environment:
-    ```python
-    import torch
-    print(f"CUDA available: {torch.cuda.is_available()}")
-    if torch.cuda.is_available():
-        print(f"CUDA version: {torch.version.cuda}")
-        print(f"GPU name: {torch.cuda.get_device_name(0)}")
-    ```
-    You should see `CUDA available: True` and your RTX 4070 listed. If not, revisit PyTorch installation and ensure your NVIDIA GPU drivers are up to date.
 
 ##  Usage
 
