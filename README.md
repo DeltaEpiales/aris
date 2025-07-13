@@ -3,7 +3,7 @@
 ![Aris GUI Screenshot - Placeholder](Figure1.png)
 ![Aris GUI Screenshot - Placeholder](Figure2.png)
 
-
+# FOREWARNING: I regularly update this, so it breaks often; please be sure to use with caution.
 ##  Project Overview
 
 **Aris** (short for **Aristotle**) is an ambitious open-source project aimed at exploring the foundational principles for building a **lightweight Artificial General Intelligence (AGI)** capable of running on conventional home computing hardware, specifically leveraging modern GPUs like the NVIDIA RTX 4070 Studio and other RTX cards. <I just so happen to have a 4070>
