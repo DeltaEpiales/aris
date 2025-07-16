@@ -88,7 +88,7 @@ void SimulationWorker::run() {
         Eigen::VectorXf input_current = generateTaskInput();
         m_network->forward(input_current, m_current_time_ms);
 
-        // --- Task Logic and Neuromodulation ---
+        // --- Task and Neuromodulation Logic ---
         float reward = 0.0f;
         float serotonin_pulse = 0.0f;
 

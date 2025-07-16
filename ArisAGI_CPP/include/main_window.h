@@ -2,6 +2,7 @@
 #include <QMainWindow>
 #include <memory>
 
+// Forward declarations
 class QTabWidget;
 class QPushButton;
 class QSlider;
@@ -9,6 +10,11 @@ class QLabel;
 class QTimer;
 class SimulationManager;
 
+/**
+ * @class MainWindow
+ * @brief The main graphical user interface for the Aris prototype.
+ * It provides controls to run the simulation and will display the visualization.
+ */
 class MainWindow : public QMainWindow {
     Q_OBJECT
 public:

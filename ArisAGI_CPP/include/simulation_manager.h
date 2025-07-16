@@ -9,10 +9,12 @@
 #include <map>
 #include <string>
 
+// Forward declarations
 class AGINetwork;
 class HDC;
 class MainWindow;
 
+// Data structure to pass visualization data from worker to GUI thread safely.
 struct VizData {
     std::map<std::string, Eigen::MatrixXf> weights;
     std::map<std::string, Eigen::VectorXf> spikes;
@@ -21,6 +23,11 @@ struct VizData {
     float currentTime;
 };
 
+/**
+ * @class SimulationWorker
+ * @brief Runs the entire simulation loop in a separate thread to keep the GUI responsive.
+ * This object lives on a different thread than the main GUI.
+ */
 class SimulationWorker : public QObject {
     Q_OBJECT
 public:
@@ -57,6 +64,12 @@ private:
     float calculateSparsity(const Eigen::VectorXf& spikes);
 };
 
+/**
+ * @class SimulationManager
+ * @brief The main controller that lives in the GUI thread.
+ * It manages the SimulationWorker and its thread, and acts as the interface
+ * between the GUI and the simulation backend.
+ */
 class SimulationManager : public QObject {
     Q_OBJECT
 public:
