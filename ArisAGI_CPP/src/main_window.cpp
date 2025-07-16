@@ -9,6 +9,7 @@
 #include <QSlider>
 #include <QLabel>
 #include <QTimer>
+#include "config.h"
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     m_sim_manager = std::make_unique<SimulationManager>(this);
@@ -39,7 +40,7 @@ void MainWindow::setupUI() {
     auto* viz_layout = new QVBoxLayout(m_viz_tab);
     m_viz_placeholder = new QLabel("Visualization will appear here.\n(Requires a plotting library like QCustomPlot)");
     m_viz_placeholder->setAlignment(Qt::AlignCenter);
-    m_viz_placeholder->setStyleSheet("QLabel { background-color : #333; color : white; font-size: 18px; }");
+    m_viz_placeholder->setStyleSheet("QLabel { background-color : #333; color : white; font-size: 18px; border: 1px solid #555; }");
     viz_layout->addWidget(m_viz_placeholder);
 
     // Setup control tab
@@ -127,5 +128,11 @@ void MainWindow::updateGUI() {
     // This is where you would get data from the simulation manager
     // and update the plotting widgets.
     // VizData data = m_sim_manager->getVizData();
-    // m_my_plot_widget->update(data);
+    // For now, just update a label to show it's working.
+    VizData data = m_sim_manager->getVizData();
+    QString status_text = QString("Simulation Time: %1 ms\nDopamine: %2\nAcetylcholine: %3")
+                           .arg(data.currentTime, 0, 'f', 0)
+                           .arg(data.neuromodulators["dopamine"], 0, 'f', 2)
+                           .arg(data.neuromodulators["acetylcholine"], 0, 'f', 2);
+    m_viz_placeholder->setText(status_text);
 }

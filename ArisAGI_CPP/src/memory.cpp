@@ -8,7 +8,7 @@
 HippocampalModule::HippocampalModule(HDC& hdc) : m_hdc(hdc) {
     // Pre-generate the fundamental "role" and "value" basis vectors needed for contextual binding.
     m_hdc.initBasisVectors(2, "role"); // For time, reward
-    m_hdc.initBasisvectors(config::NUM_HIDDEN_NEURONS, "neuron");
+    m_hdc.initBasisVectors(config::NUM_HIDDEN_NEURONS, "neuron");
     m_hdc.initBasisVectors(1, "time_value_base");
     m_hdc.initBasisVectors(1, "reward_value_base");
 }
@@ -108,8 +108,40 @@ void NeocorticalModule::reset() { m_semantic_memory_bank.clear(); }
 
 // --- HippocampalModule Replay Logic ---
 void HippocampalModule::triggerReplay(NeocorticalModule& neocortex, const NeuromodulatorSystem& neuromodulators) {
-    // This method would implement the prioritized experience replay logic.
-    // For brevity, the full sampling logic is omitted, but it would calculate
-    // priorities based on reward, recency, and novelty (similarity to neocortex)
-    // and then call neocortex.consolidatePattern for the selected episodes.
+    if (m_episodic_memory.empty()) {
+        return;
+    }
+
+    std::vector<float> priorities;
+    priorities.reserve(m_episodic_memory.size());
+    float total_priority = 0.0f;
+
+    float serotonin_level = neuromodulators.getSerotoninLevel();
+
+    for (auto& episode : m_episodic_memory) {
+        episode.recency *= config::RECENCY_DECAY;
+        float similarity = neocortex.getSimilarityToMemory(episode.core_hv);
+        float novelty = 1.0f - similarity;
+
+        float priority = (episode.reward * config::REWARD_WEIGHT) +
+                         (episode.recency * config::RECENCY_WEIGHT) +
+                         (novelty * (config::NOVELTY_WEIGHT + serotonin_level * config::SEROTONIN_INFLUENCE));
+
+        priorities.push_back(std::max(0.0f, priority));
+        total_priority += priorities.back();
+    }
+
+    if (total_priority <= 0.0f) {
+        return;
+    }
+
+    std::discrete_distribution<int> distribution(priorities.begin(), priorities.end());
+    static std::mt19937 generator(config::RANDOM_SEED);
+
+    int num_to_replay = std::min((int)m_episodic_memory.size(), config::REPLAY_BATCH_SIZE);
+
+    for (int i = 0; i < num_to_replay; ++i) {
+        int episode_index = distribution(generator);
+        neocortex.consolidatePattern(m_episodic_memory[episode_index].core_hv);
+    }
 }

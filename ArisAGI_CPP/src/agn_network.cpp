@@ -80,4 +80,30 @@ void AGINetwork::reset() {
     // Re-initializing synapses is complex; a simpler reset might just reset neuron states.
 }
 
-// Implement other getters...
+Eigen::VectorXf AGINetwork::getSpikes(const std::string& layer_name) const {
+    if (layer_name == "input") return m_input_neurons->getSpikesHost();
+    if (layer_name == "hidden_exc") return m_exc_hidden_neurons->getSpikesHost();
+    if (layer_name == "hidden_inh") return m_inh_hidden_neurons->getSpikesHost();
+    if (layer_name == "output") return m_output_neurons->getSpikesHost();
+    return Eigen::VectorXf();
+}
+
+std::map<std::string, Eigen::MatrixXf> AGINetwork::getAllSynapticWeights() const {
+    std::map<std::string, Eigen::MatrixXf> weights;
+    for (const auto& pair : m_synapses) {
+        weights[pair.first] = pair.second->getWeights();
+    }
+    return weights;
+}
+
+void AGINetwork::setAllSynapticWeights(const std::map<std::string, Eigen::MatrixXf>& weights) {
+    for (const auto& pair : weights) {
+        if (m_synapses.count(pair.first)) {
+            m_synapses.at(pair.first)->setWeights(pair.second);
+        }
+    }
+}
+
+void AGINetwork::applyDevelopmentalBias(const Eigen::VectorXf& avg_input, const Eigen::VectorXf& avg_hidden) {
+    m_synapses.at("input_to_hidden_exc")->initializeDevelopmentalBias(avg_input, avg_hidden);
+}

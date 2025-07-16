@@ -83,27 +83,3 @@ target_link_libraries(ArisAGI
 # --- Installation (Optional) ---
 # This defines a simple 'make install' rule to copy the executable to a 'bin' directory.
 install(TARGETS ArisAGI DESTINATION bin)
-
-
-# --- Build Instructions (For README) ---
-#
-# 1. Prerequisites:
-#    - A C++ compiler (g++, clang, MSVC)
-#    - CMake (version 3.18+)
-#    - NVIDIA CUDA Toolkit (matching your driver version)
-#    - Qt6 Library (https://www.qt.io/download)
-#    - Eigen3 Library (https://eigen.tuxfamily.org)
-#
-# 2. Configure Environment:
-#    - Ensure the `nvcc` compiler is in your system's PATH.
-#    - Set the CMAKE_PREFIX_PATH environment variable to your Qt6 installation directory.
-#
-# 3. Build Steps:
-#    $ mkdir build
-#    $ cd build
-#    $ cmake ..
-#    $ make -j$(nproc)  # Use all available processor cores for a faster build
-#
-# 4. Run:
-#    $ ./ArisAGI
-#
